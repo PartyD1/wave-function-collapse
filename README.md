@@ -1,8 +1,8 @@
 # Wave-Function-Collapse
 
-Straight out of quantum mechanics, **Wave Function Collapse** (WFC) is an algorithm for procedural generation of images. This repository features **two approaches** to the WFC: the **Tiled Model** (Coding Challenge 171) and the **Overlapping Model** (Coding Challenge #186). Both implementations are available in JavaScript (p5.js) and ported to Processing (Java).
+Straight out of quantum mechanics, **Wave Function Collapse** (WFC) is an algorithm for procedural generation of images. This repository features **two core approaches** to the WFC: the **Tiled Model** (Coding Challenge 171) and the **Overlapping Model** (Coding Challenge #186). Both implementations are available in JavaScript (p5.js) and ported to Processing (Java). A third, community-contributed **Hybrid Model** (`p5js/hybrid-model`) merges both approaches with automatic tile-edge detection, incremental/single-image loading, a full control UI, and performance optimizations — see [its README](p5js/hybrid-model/README.md) for the full write-up.
 
-<img src="gifs/wfc_tiled.gif" alt="GIF animation of the tiled WFC algorithm" height="250"> <img src="gifs/wfc_overlapping.gif" alt="GIF animation of the overlapping WFC algorithm" height="250">
+<img src="gifs/wfc_tiled.gif" alt="GIF animation of the tiled WFC algorithm" height="250"> <img src="gifs/wfc_overlapping.gif" alt="GIF animation of the overlapping WFC algorithm" height="250"> <img src="gifs/hybrid-wfc.gif" alt="GIF animation of the hybrid WFC algorithm" height="250">
 
 ## Coding Challenges
 
@@ -31,22 +31,24 @@ Wave Function Collapse is a constraint-satisfaction algorithm inspired by quantu
 - [x] Implementation of Tile Model (Challenge 171)
 - [x] Implementation of Overlapping Model (Challenge 186)
 - [x] Processing (Java) ports for both models
+- [x] Entropy-based cell selection in the Overlapping Model (lowest-entropy cell is chosen each step, in both p5.js and Processing)
+- [x] Queue-based constraint propagation with backtracking to recover from paradoxes (Overlapping Model, p5.js)
+- [x] Hybrid Model: single codebase supporting both tiled and overlapping sources, with auto-detected tile-edge matching and incremental image loading (`p5js/hybrid-model`)
 
 ### Corrections / Additional Features
 
 - [ ] Additional edge cases for tiles 4 and 5 (Tiled Model).
 - [ ] Computed Property Names (Tiled Model) [Issue #35](https://github.com/CodingTrain/Wave-Function-Collapse/issues/35)
-- [ ] Backtracking for conflict resolution.
 
 ## Community Contributions and Improvements
 
 - [TileGrid Helper Class](https://github.com/jonnytest1/Wave-Function-Collapse/tree/main) by [@jonnytest1](https://github.com/jonnytest1) A generic grid layout approach using p5.js vectors, making it easier to unify directional logic and reference valid neighboring positions.
 - [Grid Update Optimization](https://github.com/gverger/Wave-Function-Collapse/tree/optim-updates): [Pull Request #40](https://github.com/CodingTrain/Wave-Function-Collapse/pull/40) introduces a more efficient method for updating grid cells by propagating changes only to affected cells, which improves performance and accuracy. The drawing process is also optimized, allowing multiple updates per tick, speeding up the overall process.
 - [Using Piskel to create a source image](https://github.com/kfahn22/Wave-Function-Collapse/wiki/Creating-a-source-image-for-the-WFC-%E2%80%90-overlapping-model)
-- [Highly optimized version supporting both single-image and pre-tiled source images](https://github.com/pierrebai/Wave-Function-Collapse)
+- [Highly optimized version supporting both single-image and pre-tiled source images](https://github.com/pierrebai/Wave-Function-Collapse) by [@pierrebai](https://github.com/pierrebai), merged into this repo as the **Hybrid Model** (`p5js/hybrid-model`).
   A detailed write-up of how the changes were done and why can be found in its own
-  [readme here](https://github.com/pierrebai/Wave-Function-Collapse/tree/main/p5js/hybrid-model/README.md)
-- An optimised overlaping model using queues (instead of recurcion) and backtracking to avoid paradoxes. [Version @alin256](https://github.com/alin256/Wave-Function-Collapse/tree/efficientQueueBranch). The version also adds some GUI improvements.
+  [README](p5js/hybrid-model/README.md).
+- An optimized Overlapping Model using a queue (instead of recursion) and backtracking to avoid paradoxes, plus GUI improvements, by [@alin256](https://github.com/alin256) ([original branch](https://github.com/alin256/Wave-Function-Collapse/tree/efficientQueueBranch)) — merged into `p5js/overlapping-model`.
 
 
 ## Key Resources
